@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Js</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <style>
+        .container{
+            border-radius: 20px;
+            color: black;
+            padding: 3px;
+            width: 250px;
+            margin: auto;
+            text-align: center;
+            background-color: rgb(231, 213, 213);
+        }
+
+        .container button{
+            margin-left: 20px;
+            color: gray;
+            background-color:hsl(from red 0.9 0.2 0.5);
+        }
+
+
+    </style>
+</head>
+
+<body ng-controller="myctrl">
+
+    <!-- Sample testing using expression -->
+    <p>{{4+9}}</p>
+    <button ng-click=Done()>click Me</button>
+    <button ng-dblclick="dbclick()">dbclick</button>
+
+    <!--Making a counter like -->
+    <div class="container">
+        <h1>Counter</h1>
+        <p>{{number}}</p>
+        <button ng-mouseup="counter('+')">+</button>
+        <button ng-mousedown="counter('-')">-</button>
+    </div>
+
+
+    <button ng-mouseenter="MouseEnter()">MouseEnter</button>
+    <button ng-mouseleave="MouseLeave()">MouseLeave</button>
+    <button ng-mousemove="MouseMove()">MouseMove</button>
+    <button ng-mousehover="MouseOver()">MouseOver</button>
+
+
+    <form style="margin-top: 40px;">
+        <input type="text" placeholder="name" name="name" ng-focus="colorCh()" ng-style="{'background-color':color}">
+        <input type="text" placeholder="password" name="password">
+    </form>
+
+
+    <!-- Copy Paste events -->
+     <input type="text" placeholder="name" name="username" ng-copy="cp()" ng-paste="pas()" ng-cut="cut()">
+    <script>
+        const app = angular.module('myApp', []);
+        app.controller('myctrl', function ($scope) {
+
+            $scope.Done = function () {
+                alert("button was clicked");
+            }
+
+            $scope.dbclick = function () {
+                alert("double clicked was done");
+            }
+
+            $scope.number = 0;
+            $scope.counter = function (val) {
+                if (val === "+") {
+                    $scope.number += 1;
+                } else {
+                    if ($scope.number > 0) {
+                        $scope.number -= 1;
+                    }
+                }
+            }
+
+            $scope.MouseEnter = function(){
+                alert('Mouse enter was done') ; 
+            }
+
+            $scope.MouseLeave = function(){
+                alert('Mouse Leave was done') ; 
+            }
+
+            $scope.MouseOver = function(){
+                alert('Mouse Over was done') ; 
+            }
+
+            $scope.MouseMove = function(){
+                alert('Mouse Move was done') ; 
+            }
+
+            $scope.color = 'black'; 
+            $scope.colorCh = function(){
+               $scope.color = 'green'; 
+            }
+
+            $scope.cp = function(){
+                alert('You have to copy ')
+            }
+
+            $scope.pas = function(){
+                alert("Paste ho gya chote . . ")
+            }
+
+            $scope.cut = function(){
+                alert("Ky kat rha chote . . . ")
+            }
+        })
+    </script>
+</body>
+
+</html>
